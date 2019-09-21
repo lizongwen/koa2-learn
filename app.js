@@ -7,9 +7,13 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const pv = require('./middleware/koa-pv')
 
+//导入session中间件
 const session = require('koa-generic-session')
+//导入redis中间件
 const Redis = require('koa-redis')
+//导入mongoose中间件
 const mongoose = require('mongoose')
+//导入数据库自定义配置
 const dbConfig = require('./dbs/config')
 
 const index = require('./routes/index')
@@ -17,7 +21,9 @@ const users = require('./routes/users')
 
 // error handler
 onerror(app)
+//定义session加密key值
 app.keys = ['aaa']
+//使用session中间件
 app.use(session({
 	key: 'session',
 	prefix: '',
@@ -47,6 +53,8 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+
+//使用mongoose链接mongodb数据库
 mongoose.connect(dbConfig.dbs, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true

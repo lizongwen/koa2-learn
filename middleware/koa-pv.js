@@ -1,6 +1,7 @@
 function pv(ctx) {
+	console.log(ctx.session)
 	ctx.session.count++
-	console.log(ctx.path);
+	console.log(ctx.session)
 }
 
 module.exports = function () {
