@@ -51,6 +51,7 @@ app.use(async (ctx, next) => {
 })
 
 // routes
+console.log(index.routes())
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
