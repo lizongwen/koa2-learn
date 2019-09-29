@@ -1,6 +1,5 @@
 function pv(ctx) {
-	// console.log(ctx.session)
-	// ctx.session.count++
+	ctx.session.count++
 	// console.log(ctx.session)
 }
 

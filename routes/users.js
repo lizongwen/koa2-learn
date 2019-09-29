@@ -17,7 +17,7 @@ router.get('/bar', function (ctx, next) {
 
 router.get('/fix', async function (ctx) {
 	//通过redis客户端实例存储数据到redis数据库
-	const st = await Store.hset('fix', 'name', Math.random())
+	const st = await Store.hset('fix', 'name', 'lzwcl')
 	ctx.body = {
 		code:0
 	}
@@ -45,10 +45,10 @@ router.post('/getPerson', async function (ctx) {
 	let code, result, results;
 	try {
 		result = await Person.findOne({
-			name: ctx.request.body.name
+			name: 'lzw'
 		});
 		results = await Person.find({
-			name: ctx.request.body.name
+			name: 'lzw'
 		});
 		code = 0
 	} catch (error) {
